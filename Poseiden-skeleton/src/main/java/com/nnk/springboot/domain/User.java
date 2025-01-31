@@ -1,7 +1,7 @@
 package com.nnk.springboot.domain;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "users")
@@ -9,13 +9,13 @@ public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
-    @NotBlank(message = "Username is mandatory")
+    @NotNull(message = "Username is mandatory")
     private String username;
-    @NotBlank(message = "Password is mandatory")
+    @NotNull(message = "Password is mandatory")
     private String password;
-    @NotBlank(message = "FullName is mandatory")
+    @NotNull(message = "FullName is mandatory")
     private String fullname;
-    @NotBlank(message = "Role is mandatory")
+    @NotNull(message = "Role is mandatory")
     private String role;
 
     public Integer getId() {
