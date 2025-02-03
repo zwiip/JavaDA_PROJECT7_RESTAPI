@@ -9,13 +9,13 @@ public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
-    @NotNull(message = "Username is mandatory")
+    @NotBlank(message = "Username is mandatory")
     private String username;
-    @NotNull(message = "Password is mandatory")
+    @NotBlank(message = "Password is mandatory")
     private String password;
-    @NotNull(message = "FullName is mandatory")
+    @NotBlank(message = "FullName is mandatory")
     private String fullname;
-    @NotNull(message = "Role is mandatory")
+    @NotBlank(message = "Role is mandatory")
     private String role;
 
     public Integer getId() {
