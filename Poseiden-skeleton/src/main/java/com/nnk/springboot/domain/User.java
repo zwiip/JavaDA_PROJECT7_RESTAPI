@@ -1,7 +1,7 @@
 package com.nnk.springboot.domain;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "users")
@@ -17,6 +17,12 @@ public class User {
     private String fullname;
     @NotBlank(message = "Role is mandatory")
     private String role;
+
+    public User(String username, String password, String fullname) {
+        this.username = username;
+        this.password = password;
+        this.fullname = fullname;
+    }
 
     public Integer getId() {
         return id;
