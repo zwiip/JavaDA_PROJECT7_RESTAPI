@@ -54,7 +54,7 @@ public class UserController {
         if (result.hasErrors()) {
             return "user/update";
         }
-        userService.updateUser(user);
+        userService.updateUser(user, id);
         model.addAttribute("users", userService.getUsers());
         return "redirect:/user/list";
     }

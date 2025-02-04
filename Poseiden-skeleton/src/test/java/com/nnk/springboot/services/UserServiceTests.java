@@ -5,6 +5,8 @@ import com.nnk.springboot.repositories.UserRepository;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -27,6 +29,9 @@ public class UserServiceTests {
     @Mock
     private UserRepository userRepository;
 
+    @Captor
+    ArgumentCaptor<User> userCaptor;
+
     @BeforeEach
     public void setUp() {
         userRepository = mock(UserRepository.class);
@@ -35,8 +40,8 @@ public class UserServiceTests {
 
     @Test
     public void givenTwoUsers_whenGetUsers_thenReturnTheListWithTwoUsers() {
-        User firstUser = new User("firstUser", "1password!", "First User");
-        User secondUser = new User( "secondUser", "2password!", "Second User");
+        User firstUser = new User("firstUser", "1password!", "First User", "USER");
+        User secondUser = new User( "secondUser", "2password!", "Second User", "USER");
         List<User> listOfTwoUsers = new ArrayList();
         listOfTwoUsers.add(firstUser);
         listOfTwoUsers.add(secondUser);
@@ -50,7 +55,7 @@ public class UserServiceTests {
 
     @Test
     public void givenACorrectId_whenGetUserById_thenReturnCorrespondingUser() {
-        User user = new User("John", "1password!", "Jonh Doe");
+        User user = new User("John", "1password!", "Jonh Doe", "USER");
         when(userRepository.findById(anyInt())).thenReturn(Optional.of(user));
 
         Optional<User> actualUser = userService.getUser(1);
@@ -61,11 +66,25 @@ public class UserServiceTests {
 
     @Test
     public void givenCorrectUser_whenSaveNewUser_thenUserIsSaved() {
-        User user = new User("John", "1password!", "Jonh Doe");
+        User user = new User("John", "1password!", "Jonh Doe", "USER");
         doNothing().when(userRepository.save(user));
 
         userService.saveNewUser(user);
 
         verify(userRepository).save(user);
+    }
+
+    @Test
+    public void givenNewUsername_whenUpdateUser_thenItsUsernameIsUpdated() {
+        User user = new User("John", "1password!", "Jonh Doe", "USER");
+        User updatedUser = new User("Johnny", "1password!", "Jonh Doe", "USER");
+        when(userRepository.findById(1)).thenReturn(Optional.of(user));
+        doNothing().when(userRepository).save(any(User.class));
+
+        userService.updateUser(updatedUser, 1);
+
+        verify(userRepository).save(userCaptor.capture());
+        User capturedUserValue = userCaptor.getValue();
+        assertEquals(updatedUser.getUsername(), capturedUserValue.getUsername());
     }
 }
