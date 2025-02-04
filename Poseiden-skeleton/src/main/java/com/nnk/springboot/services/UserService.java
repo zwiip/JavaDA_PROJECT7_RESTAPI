@@ -21,7 +21,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    /* METHODS */
+    /* METHODS */// TODO : gestion des erreurs
     public List<User> getUsers() {
         return userRepository.findAll();
     }
@@ -36,11 +36,20 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public void updateUser(User user) {
+    public void updateUser(User user, Integer id) {
+        Optional<User> userToUpdate = getUser(id);
+
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        user.setPassword(encoder.encode(user.getPassword()));
-        user.setId(user.getId());
-        userRepository.save(user);
+        if (userToUpdate.isPresent()) {
+            userToUpdate.get().setFullname(user.getFullname());
+            userToUpdate.get().setUsername(user.getUsername());
+            userToUpdate.get().setPassword(encoder.encode(user.getPassword()));
+            userToUpdate.get().setRole(user.getRole());
+
+            userRepository.save(userToUpdate.get());
+        } else {
+            logger.warning("User not found");
+        }
     }
 
     public void deleteUser(int id) {
