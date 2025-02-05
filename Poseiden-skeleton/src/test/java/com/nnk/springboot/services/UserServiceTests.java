@@ -42,7 +42,7 @@ public class UserServiceTests {
     public void givenTwoUsers_whenGetUsers_thenReturnTheListWithTwoUsers() {
         User firstUser = new User("firstUser", "1password!", "First User", "USER");
         User secondUser = new User( "secondUser", "2password!", "Second User", "USER");
-        List<User> listOfTwoUsers = new ArrayList();
+        List<User> listOfTwoUsers = new ArrayList<>();
         listOfTwoUsers.add(firstUser);
         listOfTwoUsers.add(secondUser);
         when(userRepository.findAll()).thenReturn(listOfTwoUsers);
