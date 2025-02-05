@@ -30,6 +30,8 @@ public class RuleName {
     @Length(max = 125)
     String sqlPart;
 
+    public RuleName() {}
+
     public RuleName(String name, String description, String json, String template, String sql, String sqlPart) {
         this.name = name;
         this.description = description;

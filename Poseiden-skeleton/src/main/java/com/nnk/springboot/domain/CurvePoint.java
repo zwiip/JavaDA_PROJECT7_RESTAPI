@@ -21,7 +21,9 @@ public class CurvePoint {
 
     private Timestamp creationDate;
 
-    public CurvePoint(Double term, Double value) {
+    public CurvePoint() {};
+
+    public CurvePoint(Integer curveId, Double term, Double value) {
         this.term = term;
         this.value = value;
     }
