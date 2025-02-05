@@ -63,10 +63,11 @@ public class Trade {
     @Length(max = 125)
     private String side;
 
-    public Trade(String account, String type, Double buyQuantity) {
+    public Trade() {}
+
+    public Trade(String account, String type) {
         this.account = account;
         this.type = type;
-        this.buyQuantity = buyQuantity;
     }
 
     public Integer getTradeId() {

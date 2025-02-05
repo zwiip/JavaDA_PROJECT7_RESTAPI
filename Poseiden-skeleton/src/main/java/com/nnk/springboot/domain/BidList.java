@@ -72,6 +72,8 @@ public class BidList {
     @Length(max = 125)
     private String side;
 
+    public BidList() {}
+
     public BidList(String account, String type, Double bidQuantity) {
         this.account = account;
         this.type = type;

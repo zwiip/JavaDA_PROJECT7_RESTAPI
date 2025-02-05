@@ -27,6 +27,8 @@ public class User {
     @Length(max = 125)
     private String role;
 
+    public User() {}
+
     public User(String username, String password, String fullname, String role) {
         this.username = username;
         this.password = password;
