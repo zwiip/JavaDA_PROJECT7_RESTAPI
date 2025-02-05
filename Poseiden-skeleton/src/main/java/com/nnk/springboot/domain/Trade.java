@@ -17,12 +17,10 @@ public class Trade {
     @Length(max = 30)
     private String account;
 
-
     @NotBlank
     @Length(max = 30)
     private String type;
 
-    @NotBlank
     private Double buyQuantity;
 
     private Double sellQuantity;

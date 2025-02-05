@@ -1,11 +1,9 @@
 package com.nnk.springboot.domain;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotBlank;
 import org.hibernate.validator.constraints.Length;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 
 @Entity

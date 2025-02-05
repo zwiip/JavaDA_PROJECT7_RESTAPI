@@ -23,6 +23,7 @@ public class RuleName {
     @Length(max = 512)
     String template;
 
+    @Column(name = "sqlStr")
     @Length(max = 125)
     String sql;
 

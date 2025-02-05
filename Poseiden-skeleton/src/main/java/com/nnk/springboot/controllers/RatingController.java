@@ -32,7 +32,7 @@ public class RatingController {
     @PostMapping("/rating/validate")
     public String validate(@Valid Rating rating, BindingResult result, Model model) {
         if (!result.hasErrors()) {
-            ratingService.saveNewRating(rating);
+            ratingService.saveRating(rating);
             model.addAttribute("ratings", ratingService.getRatings());
         }
         return "rating/add";
