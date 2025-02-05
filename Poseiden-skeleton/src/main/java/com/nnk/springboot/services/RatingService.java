@@ -25,8 +25,9 @@ public class RatingService {
 
     public Optional<Rating> getRating(int id) { return ratingRepository.findById(id); }
 
-    public void saveNewRating(Rating rating) { ratingRepository.save(rating); }
+    public void saveRating(Rating rating) { ratingRepository.save(rating); }
 
+    // TODO: utilité ? save avec objet ?
     public void updateRating(Rating rating, Integer id) {
         Optional<Rating> ratingToUpdate = getRating(id);
 
