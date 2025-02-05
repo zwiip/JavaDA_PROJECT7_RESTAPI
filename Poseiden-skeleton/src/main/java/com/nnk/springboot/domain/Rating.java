@@ -1,9 +1,7 @@
 package com.nnk.springboot.domain;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import java.sql.Timestamp;
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 @Table(name = "rating")
@@ -13,10 +11,13 @@ public class Rating {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @Length(max = 125)
     private String moodysRating;
 
+    @Length(max = 125)
     private String sandPRating;
 
+    @Length(max = 125)
     private String fitchRating;
 
     private Integer orderNumber;

@@ -2,6 +2,7 @@ package com.nnk.springboot.domain;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 @Table(name = "users")
@@ -9,13 +10,21 @@ public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
+
     @NotBlank(message = "Username is mandatory")
+    @Length(max = 125)
     private String username;
+
     @NotBlank(message = "Password is mandatory")
+    @Length(max = 125)
     private String password;
+
     @NotBlank(message = "FullName is mandatory")
+    @Length(max = 125)
     private String fullname;
+
     @NotBlank(message = "Role is mandatory")
+    @Length(max = 125)
     private String role;
 
     public User(String username, String password, String fullname, String role) {
