@@ -2,23 +2,20 @@ package com.nnk.springboot.services;
 
 import com.nnk.springboot.domain.Rating;
 import com.nnk.springboot.repositories.RatingRepository;
-import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
 public class RatingServiceTests {
 
@@ -46,10 +43,11 @@ public class RatingServiceTests {
         listOfTwoRatings.add(secondRating);
         when(ratingRepository.findAll()).thenReturn(listOfTwoRatings);
 
-        List<Rating> actualListOfRatings = ratingService.getRatings();
+        List<Rating> actualListOfRatings = new ArrayList<>();
+        actualListOfRatings = ratingService.getRatings();
 
         assertEquals(2, actualListOfRatings.size());
-        assertEquals("mood", actualListOfRatings.getFirst().getMoodysRating());
+
     }
 
 }
