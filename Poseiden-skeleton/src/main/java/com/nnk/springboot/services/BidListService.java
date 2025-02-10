@@ -15,19 +15,19 @@ public class BidListService {
         this.bidListRepository = bidListRepository;
     }
 
-    List<BidList> getBidLists() {
+    public List<BidList> getBidLists() {
         return bidListRepository.findAll();
     }
 
-    Optional<BidList> getBidList(Integer id) {
+    public Optional<BidList> getBidList(Integer id) {
         return bidListRepository.findById(id);
     }
 
-    void saveBidList(BidList bidList) {
+    public void saveBidList(BidList bidList) {
         bidListRepository.save(bidList);
     }
 
-    void deleteBidList(Integer id) {
+    public void deleteBidList(Integer id) {
         bidListRepository.deleteById(id);
     }
 }
