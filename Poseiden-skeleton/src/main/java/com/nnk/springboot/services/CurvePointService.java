@@ -18,19 +18,19 @@ public class CurvePointService {
     }
 
     /* METHODS */
-    List<CurvePoint> getCurvePoints() {
+    public  List<CurvePoint> getCurvePoints() {
         return curvePointRepository.findAll();
     }
 
-    Optional<CurvePoint> getCurvePoint(Integer id) {
+    public Optional<CurvePoint> getCurvePoint(Integer id) {
         return curvePointRepository.findById(id);
     }
 
-    void saveCurvePoint(CurvePoint curvePoint) {
+    public void saveCurvePoint(CurvePoint curvePoint) {
         curvePointRepository.save(curvePoint);
     }
 
-    void deleteCurvePoint(Integer id) {
+    public void deleteCurvePoint(Integer id) {
         curvePointRepository.deleteById(id);
     }
 }

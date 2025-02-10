@@ -34,13 +34,14 @@ public class RatingController {
         if (!result.hasErrors()) {
             ratingService.saveRating(rating);
             model.addAttribute("ratings", ratingService.getRatings());
+            return "redirect:/rating/list";
         }
         return "rating/add";
     }
 
     @GetMapping("/rating/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
-        Rating rating = ratingService.getRating(id).orElseThrow(() -> new IllegalArgumentException("Invalid Rating Id:" + id));
+        Rating rating = ratingService.getRating(id).orElseThrow(() -> new IllegalArgumentException("Invalid Rating Id: " + id));
         model.addAttribute("rating", rating);
         return "rating/update";
     }
