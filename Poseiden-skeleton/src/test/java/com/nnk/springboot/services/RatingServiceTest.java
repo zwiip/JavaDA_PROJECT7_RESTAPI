@@ -17,7 +17,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
-public class RatingServiceTests {
+public class RatingServiceTest {
 
     private RatingService ratingService;
     private Rating rating;
@@ -32,22 +32,23 @@ public class RatingServiceTests {
     public void setUp() {
         ratingRepository = mock(RatingRepository.class);
         ratingService = new RatingService(ratingRepository);
+
+        rating = new Rating("mood", "sand", "fitch", 1);
     }
 
     @Test
     public void givenTwoRatings_whenGetRatings_thenReturnTheListWithTwoRatings() {
-        Rating firstRating = new Rating("mood", "sand", "fitch", 1);
+
         Rating secondRating = new Rating("mood2", "sand2", "fitch2", 2);
         List<Rating> listOfTwoRatings = new ArrayList<>();
-        listOfTwoRatings.add(firstRating);
+        listOfTwoRatings.add(rating);
         listOfTwoRatings.add(secondRating);
         when(ratingRepository.findAll()).thenReturn(listOfTwoRatings);
 
-        List<Rating> actualListOfRatings = new ArrayList<>();
+        List<Rating> actualListOfRatings;
         actualListOfRatings = ratingService.getRatings();
 
         assertEquals(2, actualListOfRatings.size());
-
     }
 
 }

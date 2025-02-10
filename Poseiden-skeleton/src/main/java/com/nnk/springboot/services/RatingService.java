@@ -23,7 +23,7 @@ public class RatingService {
     /* METHODS */
     public List<Rating> getRatings() { return ratingRepository.findAll(); }
 
-    public Optional<Rating> getRating(int id) { return ratingRepository.findById(id); }
+    public Optional<Rating> getRating(Integer id) { return ratingRepository.findById(id); }
 
     public void saveRating(Rating rating) { ratingRepository.save(rating); }
 
@@ -43,5 +43,5 @@ public class RatingService {
         }
     }
 
-    public void deleteRating(int id) { ratingRepository.deleteById(id); }
+    public void deleteRating(Integer id) { ratingRepository.deleteById(id); }
 }

@@ -36,26 +36,27 @@ public class UserServiceTest {
     public void setUp() {
         userRepository = mock(UserRepository.class);
         userService = new UserService(userRepository);
+
+        user = new User("John", "1password!", "Jonh Doe", "USER");
     }
 
     @Test
     public void givenTwoUsers_whenGetUsers_thenReturnTheListWithTwoUsers() {
-        User firstUser = new User("firstUser", "1password!", "First User", "USER");
         User secondUser = new User( "secondUser", "2password!", "Second User", "USER");
         List<User> listOfTwoUsers = new ArrayList<>();
-        listOfTwoUsers.add(firstUser);
+        listOfTwoUsers.add(user);
         listOfTwoUsers.add(secondUser);
         when(userRepository.findAll()).thenReturn(listOfTwoUsers);
 
         List<User> actualListOfUsers = userService.getUsers();
 
         assertEquals(2, actualListOfUsers.size());
-//        assertEquals("firstUser", actualListOfUsers.getFirst().getUsername());
+        assertEquals("John", actualListOfUsers.getFirst().getUsername());
+        assertEquals("secondUser", actualListOfUsers.getLast().getUsername() );
     }
 
     @Test
     public void givenACorrectId_whenGetUserById_thenReturnCorrespondingUser() {
-        User user = new User("John", "1password!", "Jonh Doe", "USER");
         when(userRepository.findById(anyInt())).thenReturn(Optional.of(user));
 
         Optional<User> actualUser = userService.getUser(1);
@@ -66,9 +67,6 @@ public class UserServiceTest {
 
     @Test
     public void givenCorrectUser_whenSaveNewUser_thenUserIsSaved() {
-        User user = new User("John", "1password!", "Jonh Doe", "USER");
-        doNothing().when(userRepository.save(user));
-
         userService.saveNewUser(user);
 
         verify(userRepository).save(user);
@@ -76,10 +74,8 @@ public class UserServiceTest {
 
     @Test
     public void givenNewUsername_whenUpdateUser_thenItsUsernameIsUpdated() {
-        User user = new User("John", "1password!", "Jonh Doe", "USER");
         User updatedUser = new User("Johnny", "1password!", "Jonh Doe", "USER");
         when(userRepository.findById(1)).thenReturn(Optional.of(user));
-        doNothing().when(userRepository).save(any(User.class));
 
         userService.updateUser(updatedUser, 1);
 
