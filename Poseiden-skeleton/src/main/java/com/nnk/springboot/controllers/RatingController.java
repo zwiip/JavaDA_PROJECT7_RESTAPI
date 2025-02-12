@@ -52,7 +52,7 @@ public class RatingController {
         if (result.hasErrors()) {
             return "rating/update";
         }
-        ratingService.updateRating(rating, id);
+        ratingService.saveRating(rating);
         model.addAttribute("ratings", ratingService.getRatings());
         return "redirect:/rating/list";
     }

@@ -27,21 +27,5 @@ public class RatingService {
 
     public void saveRating(Rating rating) { ratingRepository.save(rating); }
 
-    // TODO: utilité ? save avec objet ?
-    public void updateRating(Rating rating, Integer id) {
-        Optional<Rating> ratingToUpdate = getRating(id);
-
-        if (ratingToUpdate.isPresent()) {
-            ratingToUpdate.get().setMoodysRating(rating.getMoodysRating());
-            ratingToUpdate.get().setSandPRating(rating.getSandPRating());
-            ratingToUpdate.get().setFitchRating(rating.getFitchRating());
-            ratingToUpdate.get().setOrderNumber(rating.getOrderNumber());
-
-            ratingRepository.save(ratingToUpdate.get());
-        } else {
-            logger.warning("Rating not found");
-        }
-    }
-
     public void deleteRating(Integer id) { ratingRepository.deleteById(id); }
 }

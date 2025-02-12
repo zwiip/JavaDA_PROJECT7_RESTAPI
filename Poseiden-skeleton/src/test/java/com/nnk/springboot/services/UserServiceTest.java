@@ -83,4 +83,11 @@ public class UserServiceTest {
         User capturedUserValue = userCaptor.getValue();
         assertEquals(updatedUser.getUsername(), capturedUserValue.getUsername());
     }
+
+    @Test
+    public void givenCorrecId_whenDeleteUser_thenUserIsDeleted() {
+        userService.deleteUser(1);
+
+        verify(userRepository).deleteById(1);
+    }
 }

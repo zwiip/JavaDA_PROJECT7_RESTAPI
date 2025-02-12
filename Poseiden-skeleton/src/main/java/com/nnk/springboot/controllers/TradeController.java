@@ -21,8 +21,7 @@ public class TradeController {
     }
 
     @RequestMapping("/trade/list")
-    public String home(Model model)
-    {
+    public String home(Model model) {
         model.addAttribute("trades", tradeService.getTrades());
         return "trade/list";
     }
