@@ -30,6 +30,8 @@ public class UserService {
         return userRepository.findById(id);
     }
 
+    public User findUserByUsername(String username) { return userRepository.findByUsername(username); }
+
     public void saveNewUser(User user) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         user.setPassword(encoder.encode(user.getPassword()));

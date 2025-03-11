@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Poseidon Login</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <h1>Login with Username and Password</h1>
+    </div>
+
+    <div class="row">
+        <form th:action="@{/login}" method="post" class="form-horizontal">
+            <div class="form-group">
+                <div class="d-flex justify-content-between">
+                    <label for="username">User: </label>
+                    <input type="text" id="username" name="username" placeholder="admin" class="col-8">
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <label for="password">Password: </label>
+                    <input type="password" id="password" name="password" placeholder="123456789" class="col-8">
+                </div>
+             <!--       <p class="text-danger" th:if="${#fields.hasErrors('username')}"></p>-->
+            </div>
+
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>
