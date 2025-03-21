@@ -28,7 +28,7 @@ public class BidListRepositoryTest {
 	@Test
 	public void saveBidListTest() {
 		bid = bidListRepository.save(bid);
-		assertNotNull(bid.getBidListId());
+		assertNotNull(bid.getId());
 		assertEquals(bid.getBidQuantity(), 10d);
 	}
 
@@ -50,7 +50,7 @@ public class BidListRepositoryTest {
 	@Test
 	public void deleteBidListTest() {
 		bid = bidListRepository.save(bid);
-		Integer id = bid.getBidListId();
+		Integer id = bid.getId();
 		bidListRepository.delete(bid);
 		Optional<BidList> bidList = bidListRepository.findById(id);
 		assertFalse(bidList.isPresent());

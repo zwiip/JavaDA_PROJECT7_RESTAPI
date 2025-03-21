@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import jakarta.validation.Valid;
 
+import java.security.Principal;
+
 @Controller
 public class TradeController {
     private TradeService tradeService;
@@ -21,7 +23,8 @@ public class TradeController {
     }
 
     @RequestMapping("/trade/list")
-    public String home(Model model) {
+    public String home(Model model, Principal principal) {
+        model.addAttribute("username", principal.getName());
         model.addAttribute("trades", tradeService.getTrades());
         return "trade/list";
     }

@@ -9,9 +9,10 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "trade")
 public class Trade {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer tradeId;
+    private Integer id;
 
     @NotBlank
     @Length(max = 30)
@@ -70,12 +71,12 @@ public class Trade {
         this.type = type;
     }
 
-    public Integer getTradeId() {
-        return tradeId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setTradeId(Integer tradeId) {
-        this.tradeId = tradeId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getAccount() {

@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import jakarta.validation.Valid;
 
+import java.security.Principal;
+
 @Controller
 public class RuleNameController {
     private final RuleNameService ruleNameService;
@@ -21,8 +23,9 @@ public class RuleNameController {
     }
 
     @RequestMapping("/ruleName/list")
-    public String home(Model model)
+    public String home(Model model, Principal principal)
     {
+        model.addAttribute("username", principal.getName());
         model.addAttribute("ruleNames", ruleNameService.getRuleNames());
         return "ruleName/list";
     }

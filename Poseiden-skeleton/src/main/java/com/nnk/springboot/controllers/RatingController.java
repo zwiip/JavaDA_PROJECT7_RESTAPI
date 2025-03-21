@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import jakarta.validation.Valid;
 
+import java.security.Principal;
+
 @Controller
 public class RatingController {
     private final RatingService ratingService;
@@ -19,7 +21,8 @@ public class RatingController {
     public RatingController(RatingService ratingService) { this.ratingService = ratingService; }
 
     @RequestMapping("/rating/list")
-    public String home(Model model) {
+    public String home(Model model, Principal principal) {
+        model.addAttribute("username", principal.getName());
         model.addAttribute("ratings", ratingService.getRatings());
         return "rating/list";
     }

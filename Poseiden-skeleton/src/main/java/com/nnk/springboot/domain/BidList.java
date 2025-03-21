@@ -12,7 +12,7 @@ public class BidList {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer BidListId;
+    private Integer id;
 
     @NotBlank
     @Length(max = 30)
@@ -80,12 +80,12 @@ public class BidList {
         this.bidQuantity = bidQuantity;
     }
 
-    public Integer getBidListId() {
-        return BidListId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setBidListId(Integer bidListId) {
-        BidListId = bidListId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getAccount() {
