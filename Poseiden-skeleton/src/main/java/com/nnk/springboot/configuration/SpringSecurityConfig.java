@@ -34,7 +34,11 @@ public class SpringSecurityConfig {
                         .loginPage("/app/login")
                         .permitAll()
                         .defaultSuccessUrl("/", true))
-                .logout(logout -> logout.permitAll())
+                .logout(logout -> logout
+                        .logoutSuccessUrl("/")
+                        .invalidateHttpSession(true)
+                        .deleteCookies("JSESSIONID")
+                )
                 .build();
     }
 
