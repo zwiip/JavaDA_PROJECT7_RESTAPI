@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title> Spring Boot </title>
-    <link rel="stylesheet" href="/css/styles.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
 </head>
 <body>
 <h3> HOME PAGE </h3>
-<p>
-    <a href="/app/login">Login</a> or create one <a href="/user/list">User management</a>
-</p>
+<div class="container">
+    <div sec:authorize="isAuthenticated()" class="row" th:insert="~{nav}"></div>
+    <p sec:authorize="not isAuthenticated()">
+        <a href="/app/login" ><button class="btn btn-primary">Login</button></a>
+    </p>
+</div>
+
 </body>
 </html>
