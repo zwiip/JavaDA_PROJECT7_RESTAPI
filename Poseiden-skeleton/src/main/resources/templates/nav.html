@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <body th:fragment="navbar">
     <nav class="col-6">
+        <span sec:authorize="hasRole('ADMIN')">
+        <a href="/user/list">User List</a>&nbsp;|&nbsp;
+        </span>
         <a href="/bidList/list">Bid List</a>&nbsp;|&nbsp;
         <a href="/curvePoint/list">Curve Points</a>&nbsp;|&nbsp;
         <a href="/rating/list">Ratings</a>&nbsp;|&nbsp;
