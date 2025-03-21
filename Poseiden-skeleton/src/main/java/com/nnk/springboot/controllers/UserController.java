@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import jakarta.validation.Valid;
 
+import java.security.Principal;
+
 @Controller
 public class UserController {
     private final UserService userService;
@@ -21,7 +23,8 @@ public class UserController {
     }
 
     @RequestMapping("/user/list")
-    public String home(Model model) {
+    public String home(Model model, Principal principal) {
+        model.addAttribute("username", principal.getName());
         model.addAttribute("users", userService.getUsers());
         return "user/list";
     }
