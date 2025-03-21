@@ -25,7 +25,7 @@ public class SpringSecurityConfig {
         return http
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                        .requestMatchers("/", "/login", "/user/add", "/user/validate").permitAll()
+                        .requestMatchers("/", "/login", "/user/validate").permitAll()
                         .requestMatchers("/user/**").hasRole("ADMIN")
                         .requestMatchers( "/curvePoint/**", "/bidList/**", "/rating/**", "/ruleName/**", "/trade/**").hasAnyRole("ADMIN", "USER")
                         .anyRequest().authenticated()
