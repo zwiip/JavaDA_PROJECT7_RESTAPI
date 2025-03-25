@@ -33,10 +33,12 @@ public class UserService {
     public User findUserByUsername(String username) { return userRepository.findByUsername(username); }
 
     public void saveNewUser(User user) {
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        user.setPassword(encoder.encode(user.getPassword()));
-        userRepository.save(user);
-        logger.info("new user added: " + user);
+        if (isPasswordCorrect(user.getPassword())) {
+            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+            user.setPassword(encoder.encode(user.getPassword()));
+            userRepository.save(user);
+            logger.info("new user added: " + user.getUsername());
+        }
     }
 
     public void updateUser(User user, Integer id) {
@@ -57,5 +59,21 @@ public class UserService {
 
     public void deleteUser(Integer id) {
         userRepository.deleteById(id);
+    }
+
+    private boolean isPasswordCorrect(String password) {
+        if (password.length() < 8) {
+            throw new IllegalArgumentException("Le mot de passe doit contenir au moins huit caractères.");
+        }
+        if (!password.matches(".*[A-Z].*")) {
+            throw new IllegalArgumentException("Le mot de passe doit contenir au moins une majuscule.");
+        }
+        if (!password.matches(".*[0-9].*")) {
+            throw new IllegalArgumentException("Le mot de passe doit contenir au moins un chiffre.");
+        }
+        if (!password.matches(".*[!@#$%^&*()\\-_=+\\[\\]{}|;:,.<>?].*")) {
+            throw new IllegalArgumentException("Le mot de passe doit contenir au moins un symbole  comme !@#$%^&*()-_=+[]{}|;:,.<>?");
+        }
+        return true;
     }
 }

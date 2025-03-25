@@ -36,12 +36,16 @@ public class UserController {
 
     @PostMapping("/user/validate")
     public String validate(@Valid User user, BindingResult result, Model model) {
-        if (!result.hasErrors()) {
+        try {
             userService.saveNewUser(user);
             model.addAttribute("users", userService.getUsers());
             return "redirect:/user/list";
+        } catch (Exception e) {
+            model.addAttribute("errorMessage", e.getMessage());
+            model.addAttribute("user", user);
+            return "user/add";
         }
-        return "user/add";
+
     }
 
     @GetMapping("/user/update/{id}")
