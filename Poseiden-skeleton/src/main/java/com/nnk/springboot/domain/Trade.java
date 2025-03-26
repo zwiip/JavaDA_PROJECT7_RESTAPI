@@ -22,7 +22,7 @@ public class Trade {
     @Length(max = 30, message = "Ne doit pas excéder 30 caractères.")
     private String type;
 
-    private Double buyQuantity;
+    private Double buyQuantity = 1.0;
 
     private Double sellQuantity;
     private Double buyPrice;

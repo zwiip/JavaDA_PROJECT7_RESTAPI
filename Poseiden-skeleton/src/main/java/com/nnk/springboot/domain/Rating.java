@@ -1,6 +1,8 @@
 package com.nnk.springboot.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 
 @Entity
@@ -11,15 +13,19 @@ public class Rating {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @NotBlank(message = "Ne peut pas être vide.")
     @Length(max = 125, message = "Ne doit pas excéder 125 caractères.")
     private String moodysRating;
 
+    @NotBlank(message = "Ne peut pas être vide.")
     @Length(max = 125, message = "Ne doit pas excéder 125 caractères.")
     private String sandPRating;
 
+    @NotBlank(message = "Ne peut pas être vide.")
     @Length(max = 125, message = "Ne doit pas excéder 125 caractères.")
     private String fitchRating;
 
+    @NotNull(message = "Ne peut pas être vide.")
     private Integer orderNumber;
 
     public Rating() {}
