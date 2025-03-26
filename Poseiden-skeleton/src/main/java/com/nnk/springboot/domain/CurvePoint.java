@@ -1,6 +1,8 @@
 package com.nnk.springboot.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+
 import java.sql.Timestamp;
 
 @Entity
@@ -15,8 +17,10 @@ public class CurvePoint {
 
     private Timestamp asOfDate;
 
+    @NotBlank(message = "Ne peut pas être vide.")
     private Double term;
 
+    @NotBlank(message = "Ne peut pas être vide.")
     private Double value;
 
     private Timestamp creationDate;

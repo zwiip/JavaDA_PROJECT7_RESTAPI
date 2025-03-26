@@ -11,13 +11,13 @@ public class Rating {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Length(max = 125)
+    @Length(max = 125, message = "Ne doit pas excéder 125 caractères.")
     private String moodysRating;
 
-    @Length(max = 125)
+    @Length(max = 125, message = "Ne doit pas excéder 125 caractères.")
     private String sandPRating;
 
-    @Length(max = 125)
+    @Length(max = 125, message = "Ne doit pas excéder 125 caractères.")
     private String fitchRating;
 
     private Integer orderNumber;

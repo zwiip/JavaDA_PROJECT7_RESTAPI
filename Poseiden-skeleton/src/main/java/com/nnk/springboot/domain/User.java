@@ -11,20 +11,20 @@ public class User {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
 
-    @NotBlank(message = "Username is mandatory")
-    @Length(max = 125)
+    @NotBlank(message = "Ne peut pas être vide.")
+    @Length(max = 125, message = "Ne doit pas excéder 125 caractères.")
     private String username;
 
-    @NotBlank(message = "Password is mandatory")
-    @Length(max = 125)
+    @NotBlank(message = "Ne peut pas être vide.")
+    @Length(max = 125, message = "Ne doit pas excéder 125 caractères.")
     private String password;
 
-    @NotBlank(message = "FullName is mandatory")
-    @Length(max = 125)
+    @NotBlank(message = "Ne peut pas être vide.")
+    @Length(max = 125, message = "Ne doit pas excéder 125 caractères.")
     private String fullname;
 
-    @NotBlank(message = "Role is mandatory")
-    @Length(max = 125)
+    @NotBlank(message = "Ne peut pas être vide.")
+    @Length(max = 125, message = "Ne doit pas excéder 125 caractères.")
     private String role;
 
     public User() {}

@@ -1,6 +1,7 @@
 package com.nnk.springboot.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import org.hibernate.validator.constraints.Length;
 
 @Entity
@@ -11,23 +12,24 @@ public class RuleName {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Length(max = 125)
+    @NotBlank(message = "Ce champ ne peut pas être vide.")
+    @Length(max = 125, message = "Ne doit pas excéder 125 caractères.")
     String name;
 
-    @Length(max = 125)
+    @Length(max = 125, message = "Ne doit pas excéder 125 caractères.")
     String description;
 
-    @Length(max = 125)
+    @Length(max = 125, message = "Ne doit pas excéder 125 caractères.")
     String json;
 
-    @Length(max = 512)
+    @Length(max = 512, message = "Ne doit pas excéder 512 caractères.")
     String template;
 
     @Column(name = "sqlStr")
-    @Length(max = 125)
+    @Length(max = 125, message = "Ne doit pas excéder 125 caractères.")
     String sql;
 
-    @Length(max = 125)
+    @Length(max = 125, message = "Ne doit pas excéder 125 caractères.")
     String sqlPart;
 
     public RuleName() {}
