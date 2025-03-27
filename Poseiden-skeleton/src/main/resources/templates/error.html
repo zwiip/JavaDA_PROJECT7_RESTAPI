@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Poseidon Error</title>
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <h3 class="m-2" th:text="${errorName}">Erreur</h3>
+        <div class="d-grid">
+            <div class="row">
+                <p class="col-2">Logged in user: <b th:inline="text"  class="user"> [[${username}]] </b></p>
+                <form class="col-1" th:action="@{/app-logout}" method="POST">
+                    <input type="submit" value="Logout"/>
+                </form>
+            </div>
+        </div>
+
+        <p class="error" th:text="${errorMsg}"></p>
+        <a href="/"><button class="btn btn-primary">Retourner à l'accueil</button></a>
+    </div>
+</body>
+</html>

@@ -30,10 +30,11 @@ public class SpringSecurityConfig {
                         .requestMatchers( "/curvePoint/**", "/bidList/**", "/rating/**", "/ruleName/**", "/trade/**").hasAnyRole("ADMIN", "USER")
                         .anyRequest().authenticated()
                 )
-                .formLogin((form) -> form
+                .formLogin(form -> form
                         .loginPage("/app/login")
                         .permitAll()
-                        .defaultSuccessUrl("/", true))
+                        .defaultSuccessUrl("/", true)
+                )
                 .logout(logout -> logout
                         .logoutSuccessUrl("/")
                         .invalidateHttpSession(true)
