@@ -14,12 +14,12 @@ public class Trade {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @NotBlank(message = "Ne peut pas être vide.")
-    @Length(max = 30, message = "Ne doit pas excéder 30 caractères.")
+    @NotBlank(message = "Account must not be null.")
+    @Length(max = 30, message = "Must not exceed 30 characters")
     private String account;
 
-    @NotBlank(message = "Ne peut pas être vide.")
-    @Length(max = 30, message = "Ne doit pas excéder 30 caractères.")
+    @NotBlank(message = "Type")
+    @Length(max = 30, message = "Must not exceed 30 characters")
     private String type;
 
     private Double buyQuantity = 1.0;
@@ -30,38 +30,38 @@ public class Trade {
     private String benchmark;
     private Timestamp tradeDate;
 
-    @Length(max = 125, message = "Ne doit pas excéder 125 caractères.")
+    @Length(max = 125, message = "Must not exceed 125 characters")
     private String security;
 
-    @Length(max = 10, message = "Ne doit pas excéder 10 caractères.")
+    @Length(max = 10, message = "Must not exceed 10 characters")
     private String status;
 
-    @Length(max = 125, message = "Ne doit pas excéder 125 caractères.")
+    @Length(max = 125, message = "Must not exceed 125 characters")
     private String trader;
 
-    @Length(max = 125, message = "Ne doit pas excéder 125 caractères.")
+    @Length(max = 125, message = "Must not exceed 125 characters")
     private String book;
 
-    @Length(max = 125, message = "Ne doit pas excéder 125 caractères.")
+    @Length(max = 125, message = "Must not exceed 125 characters")
     private String creationName;
 
     private Timestamp creationDate;
 
-    @Length(max = 125, message = "Ne doit pas excéder 125 caractères.")
+    @Length(max = 125, message = "Must not exceed 125 characters")
     private String revisionName;
 
     private Timestamp revisionDate;
 
-    @Length(max = 125, message = "Ne doit pas excéder 125 caractères.")
+    @Length(max = 125, message = "Must not exceed 125 characters")
     private String dealName;
 
-    @Length(max = 125, message = "Ne doit pas excéder 125 caractères.")
+    @Length(max = 125, message = "Must not exceed 125 characters")
     private String dealType;
 
-    @Length(max = 125, message = "Ne doit pas excéder 125 caractères.")
+    @Length(max = 125, message = "Must not exceed 125 characters")
     private String sourceListId;
 
-    @Length(max = 125, message = "Ne doit pas excéder 125 caractères.")
+    @Length(max = 125, message = "Must not exceed 125 characters")
     private String side;
 
     public Trade() {}

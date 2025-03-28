@@ -12,24 +12,24 @@ public class RuleName {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @NotBlank(message = "Ce champ ne peut pas être vide.")
-    @Length(max = 125, message = "Ne doit pas excéder 125 caractères.")
+    @NotBlank(message = "Name must not be null")
+    @Length(max = 125, message = "Must not exceed 125 characters")
     String name;
 
-    @Length(max = 125, message = "Ne doit pas excéder 125 caractères.")
+    @Length(max = 125, message = "Must not exceed 125 characters")
     String description;
 
-    @Length(max = 125, message = "Ne doit pas excéder 125 caractères.")
+    @Length(max = 125, message = "Must not exceed 125 characters")
     String json;
 
-    @Length(max = 512, message = "Ne doit pas excéder 512 caractères.")
+    @Length(max = 512, message = "Must not exceed 512 characters")
     String template;
 
     @Column(name = "sqlStr")
-    @Length(max = 125, message = "Ne doit pas excéder 125 caractères.")
+    @Length(max = 125, message = "Must not exceed 125 characters")
     String sql;
 
-    @Length(max = 125, message = "Ne doit pas excéder 125 caractères.")
+    @Length(max = 125, message = "Must not exceed 125 characters")
     String sqlPart;
 
     public RuleName() {}

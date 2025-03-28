@@ -13,19 +13,19 @@ public class Rating {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @NotBlank(message = "Ne peut pas être vide.")
-    @Length(max = 125, message = "Ne doit pas excéder 125 caractères.")
+    @NotBlank(message = "MoodysRating must not be null")
+    @Length(max = 125, message = "Must not exceed 125 characters")
     private String moodysRating;
 
-    @NotBlank(message = "Ne peut pas être vide.")
-    @Length(max = 125, message = "Ne doit pas excéder 125 caractères.")
+    @NotBlank(message = "SandPRating must not be null")
+    @Length(max = 125, message = "Must not exceed 125 characters")
     private String sandPRating;
 
-    @NotBlank(message = "Ne peut pas être vide.")
-    @Length(max = 125, message = "Ne doit pas excéder 125 caractères.")
+    @NotBlank(message = "FitchRating must not be null")
+    @Length(max = 125, message = "Must not exceed 125 characters")
     private String fitchRating;
 
-    @NotNull(message = "Ne peut pas être vide.")
+    @NotNull(message = "OrderNumber must not be null")
     private Integer orderNumber;
 
     public Rating() {}
