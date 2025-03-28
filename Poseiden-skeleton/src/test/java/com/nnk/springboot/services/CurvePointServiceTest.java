@@ -27,12 +27,12 @@ public class CurvePointServiceTest {
         curvePointRepository = mock(CurvePointRepository.class);
         curvePointService = new CurvePointService(curvePointRepository);
 
-        curvePoint = new CurvePoint(10d, 30d);
+        curvePoint = new CurvePoint(1, 10d, 30d);
     }
 
     @Test
     public void givenTwoCurvePoints_whenGetCurvePoints_thenReturnTheListWithTwoCurvePoints() {
-        CurvePoint secondCurvePoint = new CurvePoint(20d, 40d);
+        CurvePoint secondCurvePoint = new CurvePoint(2, 20d, 40d);
         List<CurvePoint> listOfTwoCurvePoints = new ArrayList<>();
         listOfTwoCurvePoints.add(curvePoint);
         listOfTwoCurvePoints.add(secondCurvePoint);

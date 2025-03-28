@@ -22,7 +22,7 @@ public class CurvePointRepositoryTest {
 
 	@BeforeEach
 	public void setup() {
-		curvePoint = new CurvePoint(10d, 30d);
+		curvePoint = new CurvePoint(1,10d, 30d);
 	}
 
 	@Test

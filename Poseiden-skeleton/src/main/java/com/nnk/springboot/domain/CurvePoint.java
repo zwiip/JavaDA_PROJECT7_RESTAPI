@@ -13,21 +13,21 @@ public class CurvePoint {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @NotNull(message = "Curve Id must not be null")
     private Integer curveId;
 
     private Timestamp asOfDate;
 
-    @NotNull(message = "Ne peut pas être vide.")
     private Double term;
 
-    @NotNull(message = "Ne peut pas être vide.")
     private Double value;
 
     private Timestamp creationDate;
 
     public CurvePoint() {}
 
-    public CurvePoint(Double term, Double value) {
+    public CurvePoint(Integer curveId, Double term, Double value) {
+        this.curveId = curveId;
         this.term = term;
         this.value = value;
     }
