@@ -2,15 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Poseidon Error</title>
-    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap5.min.css">
 </head>
 <body>
-    <div class="container-fluid">
-        <h3 class="m-2" th:text="${errorName}">Erreur</h3>
-        <div class="d-grid">
-            <div class="row">
-                <p class="col-2">Logged in user: <b th:inline="text"  class="user"> [[${username}]] </b></p>
-                <form class="col-1" th:action="@{/app-logout}" method="POST">
+    <div class="m-5 w-50">
+        <div class="row">
+            <h3 class="col-6" th:text="${errorName}">Erreur</h3>
+            <div class="col-6 d-flex flex-column align-items-end">
+                <p>Logged in user: <b th:inline="text"  class="user"> [[${username}]] </b></p>
+                <form th:action="@{/app-logout}" method="POST">
                     <input type="submit" value="Logout"/>
                 </form>
             </div>
