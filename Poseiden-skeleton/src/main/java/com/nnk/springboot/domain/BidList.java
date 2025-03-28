@@ -1,6 +1,7 @@
 package com.nnk.springboot.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
 import org.hibernate.validator.constraints.Length;
 
@@ -22,6 +23,7 @@ public class BidList {
     @Length(max = 30, message = "Must not exceed 30 characters")
     private String type;
 
+    @DecimalMin(value = "1.0", message = "Minimum value is 1.0")
     private Double bidQuantity;
 
     private Double askQuantity;
