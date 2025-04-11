@@ -13,6 +13,7 @@ public class User {
 
     @NotBlank(message = "Username must not be null")
     @Length(max = 125, message = "Must not exceed 125 characters")
+    @Column(unique = true)
     private String username;
 
     @NotBlank(message = "Password must not be null")
