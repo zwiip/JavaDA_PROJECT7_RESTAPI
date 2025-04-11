@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.anyInt;
@@ -37,12 +36,12 @@ public class UserServiceTest {
         userRepository = mock(UserRepository.class);
         userService = new UserService(userRepository);
 
-        user = new User("John", "1password!", "Jonh Doe", "USER");
+        user = new User("John", "1Password!", "Jonh Doe", "USER");
     }
 
     @Test
     public void givenTwoUsers_whenGetUsers_thenReturnTheListWithTwoUsers() {
-        User secondUser = new User( "secondUser", "2password!", "Second User", "USER");
+        User secondUser = new User( "secondUser", "2Password!", "Second User", "USER");
         List<User> listOfTwoUsers = new ArrayList<>();
         listOfTwoUsers.add(user);
         listOfTwoUsers.add(secondUser);
@@ -66,6 +65,15 @@ public class UserServiceTest {
     }
 
     @Test
+    public void givenACorrectUsername_whenGetUserByUsername_thenReturnCorrespondingUser() {
+        when(userRepository.findByUsername(anyString())).thenReturn(user);
+
+        User actualUser = userService.findUserByUsername("John");
+
+        assertEquals("John", actualUser.getUsername());
+    }
+
+    @Test
     public void givenCorrectUser_whenSaveNewUser_thenUserIsSaved() {
         userService.saveNewUser(user);
 
@@ -74,7 +82,7 @@ public class UserServiceTest {
 
     @Test
     public void givenNewUsername_whenUpdateUser_thenItsUsernameIsUpdated() {
-        User updatedUser = new User("Johnny", "1password!", "Jonh Doe", "USER");
+        User updatedUser = new User("Johnny", "1Password!", "Jonh Doe", "USER");
         when(userRepository.findById(1)).thenReturn(Optional.of(user));
 
         userService.updateUser(updatedUser, 1);
