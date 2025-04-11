@@ -74,7 +74,7 @@ public class UserServiceTest {
     }
 
     @Test
-    public void givenCorrectUser_whenSaveNewUser_thenUserIsSaved() {
+    public void givenCorrectUser_whenSaveNewUser_thenUserIsSaved() throws Exception {
         userService.saveNewUser(user);
 
         verify(userRepository).save(user);

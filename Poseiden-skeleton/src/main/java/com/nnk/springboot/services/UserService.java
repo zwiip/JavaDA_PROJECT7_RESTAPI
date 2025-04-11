@@ -4,7 +4,9 @@ import com.nnk.springboot.domain.User;
 import com.nnk.springboot.repositories.UserRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
@@ -76,13 +78,21 @@ public class UserService {
      * Saves a User entity to the repository after checking the password and encrypting it.
      * @param user the User to save.
      */
-    public void saveNewUser(User user) {
+    @Transactional
+    public void saveNewUser(User user) throws Exception {
         logger.fine("Saving the user: " + user.getUsername());
-        if (isPasswordCorrect(user.getPassword())) {
-            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-            user.setPassword(encoder.encode(user.getPassword()));
-            userRepository.save(user);
-            logger.info("New user added: " + user.getUsername());
+        try {
+            if (isPasswordCorrect(user.getPassword())) {
+                BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+                user.setPassword(encoder.encode(user.getPassword()));
+                userRepository.save(user);
+                logger.info("New user added: " + user.getUsername());
+            }
+        } catch (Exception error) {
+            if (error instanceof SQLIntegrityConstraintViolationException) {
+                throw new Exception("There is already a User with this username.");
+            }
+            throw error;
         }
     }
 
