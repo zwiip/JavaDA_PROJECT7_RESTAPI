@@ -20,16 +20,16 @@ public class CurvePoint {
 
     private Double term;
 
-    private Double value;
+    private Double curveValue;
 
     private Timestamp creationDate;
 
     public CurvePoint() {}
 
-    public CurvePoint(Integer curveId, Double term, Double value) {
+    public CurvePoint(Integer curveId, Double term, Double curveValue) {
         this.curveId = curveId;
         this.term = term;
-        this.value = value;
+        this.curveValue = curveValue;
     }
 
     public Integer getId() {
@@ -65,11 +65,11 @@ public class CurvePoint {
     }
 
     public Double getValue() {
-        return value;
+        return curveValue;
     }
 
     public void setValue(Double value) {
-        this.value = value;
+        this.curveValue = value;
     }
 
     public Timestamp getCreationDate() {
