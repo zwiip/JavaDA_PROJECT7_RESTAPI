@@ -38,7 +38,6 @@ public class UserController {
     public String validate(@Valid User user, BindingResult result, Model model) {
         try {
             userService.saveNewUser(user);
-            model.addAttribute("users", userService.getUsers());
             return "redirect:/user/list";
         } catch (Exception e) {
             model.addAttribute("errorMessage", e.getMessage());
@@ -62,14 +61,12 @@ public class UserController {
             return "user/update";
         }
         userService.updateUser(user, id);
-        model.addAttribute("users", userService.getUsers());
         return "redirect:/user/list";
     }
 
     @GetMapping("/user/delete/{id}")
     public String deleteUser(@PathVariable("id") Integer id, Model model) {
         userService.deleteUser(id);
-        model.addAttribute("users", userService.getUsers());
         return "redirect:/user/list";
     }
 }

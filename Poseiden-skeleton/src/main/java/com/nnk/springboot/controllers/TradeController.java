@@ -38,7 +38,6 @@ public class TradeController {
     public String validate(@Valid Trade trade, BindingResult result, Model model) {
         if (!result.hasErrors()) {
             tradeService.saveTrade(trade);
-            model.addAttribute("trades", tradeService.getTrades());
             return "redirect:/trade/list";
         }
         return "trade/add";
@@ -58,14 +57,12 @@ public class TradeController {
             return "trade/update";
         }
         tradeService.saveTrade(trade);
-        model.addAttribute("trades", tradeService.getTrades());
         return "redirect:/trade/list";
     }
 
     @GetMapping("/trade/delete/{id}")
     public String deleteTrade(@PathVariable("id") Integer id, Model model) {
         tradeService.deleteTrade(id);
-        model.addAttribute("trades", tradeService.getTrades());
         return "redirect:/trade/list";
     }
 }

@@ -36,7 +36,6 @@ public class RatingController {
     public String validate(@Valid Rating rating, BindingResult result, Model model) {
         if (!result.hasErrors()) {
             ratingService.saveRating(rating);
-            model.addAttribute("ratings", ratingService.getRatings());
             return "redirect:/rating/list";
         }
         return "rating/add";
@@ -56,14 +55,12 @@ public class RatingController {
             return "rating/update";
         }
         ratingService.saveRating(rating);
-        model.addAttribute("ratings", ratingService.getRatings());
         return "redirect:/rating/list";
     }
 
     @GetMapping("/rating/delete/{id}")
     public String deleteRating(@PathVariable("id") Integer id, Model model) {
         ratingService.deleteRating(id);
-        model.addAttribute("ratings", ratingService.getRatings());
         return "redirect:/rating/list";
     }
 }

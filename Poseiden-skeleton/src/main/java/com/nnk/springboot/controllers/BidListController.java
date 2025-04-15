@@ -37,7 +37,6 @@ public class BidListController {
     public String validate(@Valid BidList bid, BindingResult result, Model model) {
         if (!result.hasErrors()) {
             bidListService.saveBidList(bid);
-            model.addAttribute("bidLists", bidListService.getBidLists());
             return "redirect:/bidList/list";
         }
         return "bidList/add";
@@ -57,14 +56,12 @@ public class BidListController {
             return "bidList/update";
         }
         bidListService.saveBidList(bidList);
-        model.addAttribute("bidLists", bidListService.getBidLists());
         return "redirect:/bidList/list";
     }
 
     @GetMapping("/bidList/delete/{id}")
     public String deleteBid(@PathVariable("id") Integer id, Model model) {
         bidListService.deleteBidList(id);
-        model.addAttribute("bidLists", bidListService.getBidLists());
         return "redirect:/bidList/list";
     }
 }

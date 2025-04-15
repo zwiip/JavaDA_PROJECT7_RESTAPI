@@ -39,7 +39,6 @@ public class CurvePointController {
     public String validate(@Valid CurvePoint curvePoint, BindingResult result, Model model) {
         if (!result.hasErrors()) {
             curvePointService.saveCurvePoint(curvePoint);
-            model.addAttribute("curvePoints", curvePointService.getCurvePoints());
             return "redirect:/curvePoint/list";
         }
         return "curvePoint/add";
@@ -52,7 +51,6 @@ public class CurvePointController {
         return "curvePoint/update";
     }
 
-    // TODO : vérifier si save ok pour update
     @PostMapping("/curvePoint/update/{id}")
     public String updateBid(@PathVariable("id") Integer id, @Valid CurvePoint curvePoint,
                              BindingResult result, Model model) {
@@ -60,14 +58,12 @@ public class CurvePointController {
             return "curvePoint/update";
         }
         curvePointService.saveCurvePoint(curvePoint);
-        model.addAttribute("curvePoints", curvePointService.getCurvePoints());
         return "redirect:/curvePoint/list";
     }
 
     @GetMapping("/curvePoint/delete/{id}")
     public String deleteBid(@PathVariable("id") Integer id, Model model) {
         curvePointService.deleteCurvePoint(id);
-        model.addAttribute("curvePoints", curvePointService.getCurvePoints());
         return "redirect:/curvePoint/list";
     }
 }
