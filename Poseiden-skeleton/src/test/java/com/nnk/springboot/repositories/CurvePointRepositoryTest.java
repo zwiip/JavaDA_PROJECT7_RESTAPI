@@ -29,14 +29,14 @@ public class CurvePointRepositoryTest {
 	public void saveCurvePointTest() {
 		curvePoint = curvePointRepository.save(curvePoint);
 		assertNotNull(curvePoint.getId());
-        assertEquals(30d, curvePoint.getValue());
+        assertEquals(30d, curvePoint.getCurveValue());
 	}
 
 	@Test
 	public void updateCurvePoint() {
-		curvePoint.setValue(20d);
+		curvePoint.setCurveValue(20d);
 		curvePoint = curvePointRepository.save(curvePoint);
-        assertEquals(20d, curvePoint.getValue());
+        assertEquals(20d, curvePoint.getCurveValue());
 	}
 
 	@Test

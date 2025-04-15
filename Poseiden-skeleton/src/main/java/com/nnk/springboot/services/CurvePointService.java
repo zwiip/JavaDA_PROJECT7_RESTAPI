@@ -45,7 +45,7 @@ public class CurvePointService {
         logger.fine("Fetching the CurvePoint for the id: " + id);
         Optional<CurvePoint> curvePoint = curvePointRepository.findById(id);
         if (curvePoint.isPresent()) {
-            logger.info("Found a CurvePoint with the value: " + curvePoint.get().getValue());
+            logger.info("Found a CurvePoint with the value: " + curvePoint.get().getCurveValue());
         } else {
             logger.warning("No CurvePoint found for the id: " + id);
         }

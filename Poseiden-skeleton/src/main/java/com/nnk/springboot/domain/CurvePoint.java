@@ -64,12 +64,12 @@ public class CurvePoint {
         this.term = term;
     }
 
-    public Double getValue() {
+    public Double getCurveValue() {
         return curveValue;
     }
 
-    public void setValue(Double value) {
-        this.curveValue = value;
+    public void setCurveValue(Double curveValue) {
+        this.curveValue = curveValue;
     }
 
     public Timestamp getCreationDate() {

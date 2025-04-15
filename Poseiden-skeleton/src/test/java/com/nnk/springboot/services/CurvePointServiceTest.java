@@ -42,7 +42,7 @@ public class CurvePointServiceTest {
 
         assertEquals(2, actualCurvePoints.size());
         assertEquals(10d, actualCurvePoints.getFirst().getTerm());
-        assertEquals(40d, actualCurvePoints.getLast().getValue());
+        assertEquals(40d, actualCurvePoints.getLast().getCurveValue());
     }
 
     @Test
