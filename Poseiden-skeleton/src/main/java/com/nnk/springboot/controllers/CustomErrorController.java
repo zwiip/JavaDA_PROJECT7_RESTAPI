@@ -25,16 +25,16 @@ public class CustomErrorController implements ErrorController {
             logger.info("Status Code = " + statusCode);
 
             if (statusCode == 403) {
-                model.addAttribute("errorName", "Erreur 403 : Accès Refusé");
-                model.addAttribute("errorMsg", "Vous n'êtes pas authorisé.");
+                model.addAttribute("errorName", "Error 403: Access Forbidden");
+                model.addAttribute("errorMsg", "You are not allowed.");
 
             } else if (statusCode == 404) {
-                model.addAttribute("errorName", "Erreur 404 : Page non trouvée");
-                model.addAttribute("errorMsg", "La page que vous recherchez n'a pas été trouvée.");
+                model.addAttribute("errorName", "Error 404: Page not found");
+                model.addAttribute("errorMsg", "The page you tried to reach doesn't exist.");
 
             } else {
-                model.addAttribute("errorName", "Erreur impromptue.");
-                model.addAttribute("errorMsg", "Quelque chose semble ne pas bien fonctionner.");
+                model.addAttribute("errorName", "Unexpected Error.");
+                model.addAttribute("errorMsg", "Something went wrong.");
             }
         } else {
             logger.fine("status est null");
