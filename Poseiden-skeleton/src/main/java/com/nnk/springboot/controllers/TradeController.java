@@ -30,7 +30,7 @@ public class TradeController {
     }
 
     @GetMapping("/trade/add")
-    public String addUser(Trade bid) {
+    public String addTrade(Trade trade) {
         return "trade/add";
     }
 

@@ -78,7 +78,8 @@ public class BidListControllerIT {
     public void testShowUpdateForm() throws Exception {
         mockMvc.perform(get("/bidList/update/" + bidList.getId()))
                 .andExpect(status().isOk())
-                .andExpect(model().attributeExists("bidList"));
+                .andExpect(model().attributeExists("bidList"))
+                .andExpect(view().name("bidList/update"));
     }
 
     @Test
