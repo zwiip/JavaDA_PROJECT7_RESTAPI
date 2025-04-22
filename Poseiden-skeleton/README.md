@@ -1,27 +1,49 @@
-# spring-boot
-## Technical:
+# Poseiden
 
-1. Spring Boot 3.1.0
-2. Java 17
-3. Thymeleaf
-4. Bootstrap v.4.3.1
+## Contexte
 
+*Ce projet est le 7ème de la formation Développement d'applications Java d'OpenClassrooms.*
+Poseiden est une application Spring Boot qui, à terme, doit permettre aux utilisateurs de générer des transactions financières.
 
-## Setup with Intellij IDE
-1. Create project from Initializr: File > New > project > Spring Initializr
-2. Add lib repository into pom.xml
-3. Add folders
-    - Source root: src/main/java
-    - View: src/main/resources
-    - Static: src/main/resource/static
-4. Create database with name "demo" as configuration in application.properties
-5. Run sql script to create table doc/data.sql
+## Technologies utilisées
 
-## Implement a Feature
-1. Create mapping domain class and place in package com.nnk.springboot.domain
-2. Create repository class and place in package com.nnk.springboot.repositories
-3. Create controller class and place in package com.nnk.springboot.controllers
+- Back-end : Java, Spring Boot (Spring Data JPA, Spring Security).
+- Gestion des dépendances : Maven
+- Base de données : Hibernate et MySQL pour l'environnement de production, H2 pour les tests.
+- Front-end : Thymeleaf pour les vues HTML/CSS dynamiques.
 
-## Security
-1. Create user service to load user from  database and place in package com.nnk.springboot.services
-2. Add configuration class and place in package com.nnk.springboot.config
+## Configuration
+Le projet est paramétré pour créer et peupler automatiquement la base de données grâce à hibernate.
+Il vous suffit pour cela de spécifier votre nom d'utilisateur et mot de passe de votre base de données dans le fichier src/main/resources/application.properties :
+```
+spring.datasource.username=<votre_nom_d'utilisateur>
+spring.datasource.password=<votre_mot_de_passe>
+```
+
+## Lancement de l'application
+Prérequis : avoir spécifié le mot de passe de sa base MySql dans ``application.properties``.
+(voir section configuration)
+
+**1. Compilation et lancement**
+```
+mvn clean install
+mvn spring-boot:run
+```
+
+**2. Accès à l'application**
+Ouvrez un navigateur et accédez à ``http://localhost:8080``
+
+## Tests et rapports
+
+L'application est couverte par des tests afin de vérifier le bon fonctionnement des services.
+
+- Pour lancer les tests : ``mvn test``
+
+- Les logs des tests unitaires échoués ou réussis sont dans le dossier : ``target/surefire-reports`` 
+
+- Les logs des tests d'intégration échoués ou réussis sont dans le dossier : ``/target/failsafe-reports``
+
+- Afin de vérifier le taux de couverture des tests avec JaCoCo, vous pouvez lancer la commande : ``mvn verify``
+Note : la couverture des tests comprend les tests unitaires et d'intégration.
+
+- Les rapports JaCoCo seront générés dans le dossier : ``target/site/jacoco/index.html``
