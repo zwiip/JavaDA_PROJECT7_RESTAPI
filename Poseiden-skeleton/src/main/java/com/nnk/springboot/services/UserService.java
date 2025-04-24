@@ -62,7 +62,6 @@ public class UserService {
      * @param username String : the username of the User to retrieve.
      * @return a User object matching the username or Null.
      */
-    // TODO : ajouter constraint unique
     public User findUserByUsername(String username) {
         logger.fine("Fetching the user for the username: " + username);
         User user = userRepository.findByUsername(username);
